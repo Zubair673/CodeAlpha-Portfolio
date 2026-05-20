@@ -180,17 +180,17 @@ function App() {
         </a>
       </div>
 
-      {/* TOP RIGHT: Resume Button */}
-      <div className="fixed top-4 right-4 md:top-6 md:right-8 z-50 max-md:bottom-6 max-md:top-auto max-md:right-6">
-        <a
-          href="/MyCV..pdf"
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-2 bg-orange-500 text-white font-semibold px-4 py-2 md:px-6 md:py-2.5 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-orange-600 hover:scale-105 hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] active:scale-95 text-xs sm:text-sm md:text-base whitespace-nowrap"
-        >
-          My Resume
-        </a>
-      </div>
+      {/* TOP RIGHT: Resume Button (Mobile & Desktop Optimized) */}
+<div className="fixed top-4 right-4 md:top-6 md:right-8 z-[100]">
+  <a
+    href="/MyCV..pdf"
+    target="_blank"
+    rel="noreferrer"
+    className="flex items-center gap-2 bg-orange-500 text-white font-semibold px-4 py-2 md:px-6 md:py-2.5 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-orange-600 hover:scale-105 hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] active:scale-95 text-xs sm:text-sm md:text-base whitespace-nowrap"
+  >
+    My Resume
+  </a>
+</div>
 
       {/* FLOATING SOCIAL SIDEBAR (Desktop Only) */}
       <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4 max-md:hidden">
