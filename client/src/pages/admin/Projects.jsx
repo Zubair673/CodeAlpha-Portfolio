@@ -19,7 +19,7 @@ const Projects = () => {
   const fetchProjects = async () => {
     try {
       const response = await fetch(
-        "https://codealpha-portfolio-drii.onrender.com/api/projects"
+        "https://codealpha-portfolio-1.onrender.com/api/projects"
       );
 
       const data = await response.json();
@@ -41,7 +41,7 @@ const Projects = () => {
 
     try {
       const response = await fetch(
-        `https://codealpha-portfolio-drii.onrender.com/api/projects/${id}`,
+        `https://codealpha-portfolio-1.onrender.com/api/projects/${id}`,
         {
           method: "DELETE",
           headers: {

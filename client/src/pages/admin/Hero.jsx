@@ -7,7 +7,7 @@ const Hero = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [resume, setResume] = useState(null);
 
-  const API_URL = "https://codealpha-portfolio-drii.onrender.com";
+  const API_URL = "https://codealpha-portfolio-1.onrender.com";
 
   const [hero, setHero] = useState({
     name: "", title: "", availability: "", typingTexts: "", description: "",

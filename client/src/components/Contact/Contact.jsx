@@ -18,7 +18,7 @@ const Contact = () => {
   const [error, setError] = useState(""); // Error handling ke liye naya state
 
   useEffect(() => {
-    fetch("https://codealpha-portfolio-drii.onrender.com/api/contact")
+    fetch("https://codealpha-portfolio-1.onrender.com/api/contact")
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.contact) {
@@ -39,7 +39,7 @@ const Contact = () => {
     setError(""); // Har baar submit karne par purana error clear kar dein
 
     try {
-      const response = await fetch("https://codealpha-portfolio-drii.onrender.com/api/messages", {
+      const response = await fetch("https://codealpha-portfolio-1.onrender.com/api/messages", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

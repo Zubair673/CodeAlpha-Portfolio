@@ -115,7 +115,7 @@ const AddProject = () => {
 
       const response = await fetch(
 
-        "https://codealpha-portfolio-drii.onrender.com/api/projects",
+        "https://codealpha-portfolio-1.onrender.com/api/projects",
 
         {
 
