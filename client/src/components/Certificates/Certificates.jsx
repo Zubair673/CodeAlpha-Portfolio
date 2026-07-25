@@ -4,7 +4,7 @@ const Certificates = () => {
   const [certs, setCerts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/certificates")
+    fetch("https://codealpha-portfolio-drii.onrender.com/api/certificates")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setCerts(data.certificates);

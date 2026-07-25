@@ -10,6 +10,9 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Render Backend ka URL yahan set kar diya hai
+  const API_URL = "https://codealpha-portfolio-drii.onrender.com";
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -23,7 +26,8 @@ const AdminLogin = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      // Yahan localhost ki jagah API_URL use kiya hai
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,21 +37,15 @@ const AdminLogin = () => {
 
       const data = await response.json();
       
-      // Console mein check karein ke token aa raha hai ya nahi
-      console.log("Login Response Data:", data);
-
       if (data.success) {
-        // Token save karna
         localStorage.setItem("token", data.token);
         localStorage.setItem("admin", JSON.stringify(data.user));
-
-        // Correct route: /dashboard
         navigate("/dashboard");
       } else {
         setError(data.message || "Invalid credentials");
       }
     } catch (err) {
-      setError("Server Error - Could not connect");
+      setError("Server Error - Could not connect to API");
     }
     setLoading(false);
   };

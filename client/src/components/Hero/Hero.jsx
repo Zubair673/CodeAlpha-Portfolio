@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 
-const API = "http://localhost:5000/api/hero";
+const API = "https://codealpha-portfolio-drii.onrender.com/api/hero";
 
 const Hero = ({ handleNavClick = () => {} }) => {
   const [displayText, setDisplayText] = useState("");

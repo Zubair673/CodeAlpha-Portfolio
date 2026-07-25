@@ -6,7 +6,7 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
-const API = "http://localhost:5000/api/about";
+const API = "https://codealpha-portfolio-drii.onrender.com/api/about";
 
 const About = () => {
   const [about, setAbout] = useState({

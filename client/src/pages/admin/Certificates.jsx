@@ -13,7 +13,7 @@ const Certificates = () => {
 
   const fetchCerts = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/certificates");
+      const res = await fetch("https://codealpha-portfolio-drii.onrender.com/api/certificates");
       const data = await res.json();
       if (data.success) setCerts(data.certificates);
     } catch (err) { console.log("Failed to load"); }
@@ -28,7 +28,7 @@ const Certificates = () => {
     Object.keys(formData).forEach(key => data.append(key, formData[key]));
     if (imageFile) data.append("image", imageFile);
 
-    const url = editingId ? `http://localhost:5000/api/certificates/${editingId}` : "http://localhost:5000/api/certificates";
+    const url = editingId ? `https://codealpha-portfolio-drii.onrender.com/api/certificates/${editingId}` : "https://codealpha-portfolio-drii.onrender.com/api/certificates";
     const method = editingId ? "PUT" : "POST";
     
     try {
@@ -68,7 +68,7 @@ const Certificates = () => {
   const handleDelete = async (id) => {
     if(window.confirm("Are you sure you want to delete this?")) {
       try {
-        const res = await fetch(`http://localhost:5000/api/certificates/${id}`, { method: 'DELETE' });
+        const res = await fetch(`https://codealpha-portfolio-drii.onrender.com/api/certificates/${id}`, { method: 'DELETE' });
         const data = await res.json();
         
         if (data.success) {

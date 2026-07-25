@@ -16,7 +16,7 @@ import {
   SiMongodb,
 } from "react-icons/si";
 
-const API = "http://localhost:5000/api/skills";
+const API = "https://codealpha-portfolio-drii.onrender.com/api/skills";
 
 // ==========================================
 // Icon Mapping

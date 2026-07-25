@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API = "http://localhost:5000/api/about";
+const API = "https://codealpha-portfolio-drii.onrender.com/api/about";
 
 const About = () => {
   const token = localStorage.getItem("token");

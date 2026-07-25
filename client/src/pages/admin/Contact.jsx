@@ -16,7 +16,7 @@ const Contact = () => {
 
   const fetchContact = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/contact");
+      const res = await fetch("https://codealpha-portfolio-drii.onrender.com/api/contact");
       const data = await res.json();
       if (data.success && data.contact) {
         setContact(data.contact);
@@ -29,7 +29,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
+      const res = await fetch("https://codealpha-portfolio-drii.onrender.com/api/contact", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(contact),

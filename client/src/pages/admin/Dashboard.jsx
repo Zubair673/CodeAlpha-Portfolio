@@ -31,7 +31,7 @@ const Dashboard = () => {
       // Projects
 
       const projectRes = await fetch(
-        "http://localhost:5000/api/projects"
+        "https://codealpha-portfolio-drii.onrender.com/api/projects"
       );
 
       const projectData = await projectRes.json();
@@ -39,7 +39,7 @@ const Dashboard = () => {
       // Messages
 
       const messageRes = await fetch(
-        "http://localhost:5000/api/messages",
+        "https://codealpha-portfolio-drii.onrender.com/api/messages",
         {
           headers: {
             Authorization: `Bearer ${token}`,

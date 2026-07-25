@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaBriefcase, FaGraduationCap } from "react-icons/fa";
 
-const API = "http://localhost:5000/api/experience";
+const API = "https://codealpha-portfolio-drii.onrender.com/api/experience";
 
 const Experience = () => {
   const [experiences, setExperiences] = useState([]);

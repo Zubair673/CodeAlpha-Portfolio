@@ -10,7 +10,7 @@ const Footer = ({ active, handleNavClick, navItems }) => {
 
   // API se data fetch karna
   useEffect(() => {
-    fetch("http://localhost:5000/api/settings")
+    fetch("https://codealpha-portfolio-drii.onrender.com/api/settings")
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.settings) {
