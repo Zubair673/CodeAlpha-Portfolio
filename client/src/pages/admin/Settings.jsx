@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // React icons se eye icons
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Settings = () => {
   const [settings, setSettings] = useState({
@@ -9,7 +9,10 @@ const Settings = () => {
     newPassword: "",
   });
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // Password dikhane/chupane ke liye
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Render URL yahan set kar diya hai
+  const API_URL = "https://codealpha-portfolio-drii.onrender.com";
 
   useEffect(() => {
     fetchSettings();
@@ -17,7 +20,7 @@ const Settings = () => {
 
   const fetchSettings = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/settings");
+      const res = await fetch(`${API_URL}/api/settings`);
       const data = await res.json();
       if (data.success && data.settings) {
         setSettings({ ...data.settings, newPassword: "" });
@@ -31,7 +34,7 @@ const Settings = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/settings", {
+      const res = await fetch(`${API_URL}/api/settings`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(settings),
@@ -64,11 +67,10 @@ const Settings = () => {
         <label className="text-gray-400 block mb-2">Copyright Text</label>
         <input className="w-full p-4 mb-4 bg-[#1d1d1d] text-white rounded-lg border border-gray-700" value={settings.copyrightText || ""} onChange={(e) => setSettings({ ...settings, copyrightText: e.target.value })} />
 
-        {/* Password Reset Field with Show/Hide */}
         <label className="text-gray-400 block mb-2">Change Password</label>
         <div className="relative flex items-center mb-6">
           <input
-            type={showPassword ? "text" : "password"} // Dynamic type
+            type={showPassword ? "text" : "password"}
             className="w-full p-4 bg-[#1d1d1d] text-white rounded-lg border border-gray-700"
             value={settings.newPassword}
             onChange={(e) => setSettings({ ...settings, newPassword: e.target.value })}

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute"; // Import zaroori hai
 
 // Public Portfolio
 import Home from "./pages/admin/Home";
@@ -26,15 +27,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Portfolio */}
+        {/* Portfolio - Public */}
         <Route path="/" element={<Home />} />
 
-        {/* Admin Login */}
+        {/* Admin Login - Public */}
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/login" element={<AdminLogin />} />
 
-        {/* Dashboard */}
-        <Route path="/dashboard" element={<AdminLayout />}>
+        {/* Protected Dashboard Routes - Sirf Logged-in users ke liye */}
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <AdminLayout />
+          </ProtectedRoute>
+        }>
           <Route index element={<Dashboard />} />
           <Route path="hero" element={<Hero />} />
           <Route path="about" element={<About />} />
