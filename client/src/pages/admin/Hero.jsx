@@ -7,31 +7,34 @@ const Hero = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [resume, setResume] = useState(null);
 
+  const API_URL = "https://codealpha-portfolio-drii.onrender.com";
+
   const [hero, setHero] = useState({
     name: "", title: "", availability: "", typingTexts: "", description: "",
     stat1Value: "", stat1Label: "", stat2Value: "", stat2Label: "",
     stat3Value: "", stat3Label: "", stat4Value: "", stat4Label: "",
   });
 
-  useEffect(() => { fetchHero(); }, []);
-
-  const fetchHero = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/api/hero");
-      const data = await res.json();
-      if (data.success) {
-        setHero({
-          ...data.hero,
-          typingTexts: data.hero.typingTexts?.join(", ") || "",
-          stat1Value: data.hero.stats?.[0]?.value || "", stat1Label: data.hero.stats?.[0]?.label || "",
-          stat2Value: data.hero.stats?.[1]?.value || "", stat2Label: data.hero.stats?.[1]?.label || "",
-          stat3Value: data.hero.stats?.[2]?.value || "", stat3Label: data.hero.stats?.[2]?.label || "",
-          stat4Value: data.hero.stats?.[3]?.value || "", stat4Label: data.hero.stats?.[3]?.label || "",
-        });
-        setPreview(data.hero.profileImage || "");
-      }
-    } catch (err) { console.log(err); }
-  };
+  useEffect(() => {
+    const fetchHero = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/hero`);
+        const data = await res.json();
+        if (data.success) {
+          setHero({
+            ...data.hero,
+            typingTexts: data.hero.typingTexts?.join(", ") || "",
+            stat1Value: data.hero.stats?.[0]?.value || "", stat1Label: data.hero.stats?.[0]?.label || "",
+            stat2Value: data.hero.stats?.[1]?.value || "", stat2Label: data.hero.stats?.[1]?.label || "",
+            stat3Value: data.hero.stats?.[2]?.value || "", stat3Label: data.hero.stats?.[2]?.label || "",
+            stat4Value: data.hero.stats?.[3]?.value || "", stat4Label: data.hero.stats?.[3]?.label || "",
+          });
+          setPreview(data.hero.profileImage || "");
+        }
+      } catch (err) { console.log(err); }
+    };
+    fetchHero();
+  }, []);
 
   const handleChange = (e) => setHero({ ...hero, [e.target.name]: e.target.value });
 
@@ -40,7 +43,6 @@ const Hero = () => {
     setLoading(true);
     const formData = new FormData();
     
-    // Sabhi fields ko loop se append kar diya
     Object.entries(hero).forEach(([key, val]) => formData.append(key, val));
     formData.set("typingTexts", JSON.stringify(hero.typingTexts.split(",").map(t => t.trim())));
     
@@ -48,7 +50,7 @@ const Hero = () => {
     if (resume) formData.append("resume", resume);
 
     try {
-      const res = await fetch("http://localhost:5000/api/hero", {
+      const res = await fetch(`${API_URL}/api/hero`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -82,8 +84,13 @@ const Hero = () => {
 
         <div>
           <label className="block mb-3 font-semibold">Profile Image</label>
-          <input type="file" onChange={(e) => { setProfileImage(e.target.files[0]); setPreview(URL.createObjectURL(e.target.files[0])); }} className="w-full p-3 rounded-xl bg-[#1b1b1b]" />
-          {preview && <img src={preview} className="mt-5 w-56 rounded-xl" />}
+          <input type="file" onChange={(e) => { 
+            if(e.target.files[0]) {
+                setProfileImage(e.target.files[0]); 
+                setPreview(URL.createObjectURL(e.target.files[0])); 
+            }
+          }} className="w-full p-3 rounded-xl bg-[#1b1b1b]" />
+          {preview && <img src={preview} className="mt-5 w-56 rounded-xl" alt="Preview" />}
         </div>
         <div>
           <label className="block mb-3 font-semibold">Resume PDF</label>
