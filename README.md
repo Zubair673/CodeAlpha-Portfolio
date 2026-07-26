@@ -168,7 +168,7 @@ GitHub:
 https://github.com/Zubair673
 
 LinkedIn:
-(Add Your LinkedIn Profile)
+https://www.linkedin.com/in/muhammad-zubair-rauf-607a063ab
 
 ---
 
