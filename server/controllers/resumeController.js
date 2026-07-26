@@ -1,7 +1,9 @@
 import Resume from "../models/Resume.js";
 import cloudinary from "../config/cloudinary.js";
 
+// ===============================
 // Get Resume
+// ===============================
 
 export const getResume = async (req, res) => {
   try {
@@ -19,7 +21,9 @@ export const getResume = async (req, res) => {
   }
 };
 
+// ===============================
 // Upload Resume
+// ===============================
 
 export const uploadResume = async (req, res) => {
   try {
@@ -30,8 +34,9 @@ export const uploadResume = async (req, res) => {
       });
     }
 
-    // delete old resume
+    console.log(req.file);
 
+    // Delete old resume
     const oldResume = await Resume.findOne();
 
     if (oldResume) {
@@ -45,14 +50,17 @@ export const uploadResume = async (req, res) => {
     const newResume = await Resume.create({
       title: "Resume",
       fileUrl: req.file.path,
-      publicId: req.file.filename,
+      publicId: req.file.filename || req.file.public_id,
     });
 
     res.status(201).json({
       success: true,
+      message: "Resume Uploaded Successfully",
       resume: newResume,
     });
   } catch (error) {
+    console.log(error);
+
     res.status(500).json({
       success: false,
       message: error.message,
@@ -60,7 +68,9 @@ export const uploadResume = async (req, res) => {
   }
 };
 
+// ===============================
 // Delete Resume
+// ===============================
 
 export const deleteResume = async (req, res) => {
   try {
@@ -79,11 +89,13 @@ export const deleteResume = async (req, res) => {
 
     await Resume.deleteMany();
 
-    res.json({
+    res.status(200).json({
       success: true,
-      message: "Resume deleted successfully.",
+      message: "Resume Deleted Successfully",
     });
   } catch (error) {
+    console.log(error);
+
     res.status(500).json({
       success: false,
       message: error.message,
