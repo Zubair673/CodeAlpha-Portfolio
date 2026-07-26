@@ -13,22 +13,55 @@ import aboutRoutes from "./routes/aboutRoutes.js";
 import skillRoutes from "./routes/skillRoutes.js";
 import experienceRoutes from "./routes/experienceRoutes.js";
 import certificateRoutes from "./routes/certificateRoutes.js";
-// New Imports
 import messageRoutes from "./routes/messageRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import settingsRoutes from "./routes/settingsRoutes.js";
 
+// ===============================
+// Load Environment Variables
+// ===============================
 dotenv.config();
+
+// ===============================
+// Connect Database
+// ===============================
 connectDB();
 
 const app = express();
 
+// ===============================
+// CORS Configuration
+// ===============================
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://zubair-portfolio-phi.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS Not Allowed"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+// ===============================
 // Middleware
-app.use(cors());
+// ===============================
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// ===============================
 // API Routes
+// ===============================
 app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/resume", resumeRoutes);
@@ -37,22 +70,32 @@ app.use("/api/about", aboutRoutes);
 app.use("/api/skills", skillRoutes);
 app.use("/api/experience", experienceRoutes);
 app.use("/api/certificates", certificateRoutes);
-// New Routes Registered
 app.use("/api/messages", messageRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/settings", settingsRoutes);
 
+// ===============================
 // Home Route
+// ===============================
 app.get("/", (req, res) => {
   res.send("Portfolio Backend API Running...");
 });
 
+// ===============================
 // 404 Route
+// ===============================
 app.use((req, res) => {
-  res.status(404).json({ success: false, message: "Route Not Found" });
+  res.status(404).json({
+    success: false,
+    message: "Route Not Found",
+  });
 });
 
+// ===============================
+// Start Server
+// ===============================
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`🚀 Server Running on Port ${PORT}`);
 });
