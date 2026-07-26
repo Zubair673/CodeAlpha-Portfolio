@@ -103,7 +103,7 @@ server/
 ## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+https://github.com/Zubair673/CodeAlpha-Portfolio.git
 ```
 
 ## Install Frontend
@@ -119,7 +119,7 @@ npm start
 ```bash
 cd server
 npm install
-npm run dev
+npm start
 ```
 
 ---
@@ -128,33 +128,20 @@ npm run dev
 
 Create a `.env` file inside the server folder.
 
-```env
-PORT=5000
-
-MONGODB_URI=YOUR_MONGODB_URI
-
-JWT_SECRET=YOUR_SECRET_KEY
-
-CLOUDINARY_CLOUD_NAME=YOUR_CLOUD_NAME
-
-CLOUDINARY_API_KEY=YOUR_API_KEY
-
-CLOUDINARY_API_SECRET=YOUR_API_SECRET
-```
-
 ---
 
 # 📸 Screenshots
 
 ## Portfolio
 
-(Add Portfolio Screenshot Here)
+<img width="1352" height="643" alt="image" src="https://github.com/user-attachments/assets/da4b0df4-83fe-4b5c-91da-7074bd45b655" />
 
 ---
 
 ## Admin Dashboard
 
-(Add Dashboard Screenshot Here)
+<img width="1343" height="638" alt="image" src="https://github.com/user-attachments/assets/61d2cc67-d352-43eb-8a2d-bdbc170cc827" />
+
 
 ---
 
