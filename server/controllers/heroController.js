@@ -38,9 +38,9 @@ export const updateHero = async (req, res) => {
       hero = await Hero.create({});
     }
 
-    // =====================================
-    // Profile Image Upload
-    // =====================================
+    // ==========================
+    // Profile Image
+    // ==========================
 
     if (req.files?.profileImage) {
       if (hero.profileImageId) {
@@ -54,15 +54,17 @@ export const updateHero = async (req, res) => {
         }
       );
 
+      console.log("PROFILE RESULT:", result);
+
       hero.profileImage = result.secure_url;
       hero.profileImageId = result.public_id;
 
       fs.unlinkSync(req.files.profileImage[0].path);
     }
 
-    // =====================================
-    // Resume Upload
-    // =====================================
+    // ==========================
+    // Resume
+    // ==========================
 
     if (req.files?.resume) {
       if (hero.resumeId) {
@@ -79,28 +81,28 @@ export const updateHero = async (req, res) => {
         }
       );
 
+      console.log("RESUME RESULT:", result);
+
       hero.resume = result.secure_url;
       hero.resumeId = result.public_id;
 
       fs.unlinkSync(req.files.resume[0].path);
     }
 
-    // =====================================
+    // ==========================
     // Basic Info
-    // =====================================
+    // ==========================
 
     hero.name = req.body.name;
     hero.title = req.body.title;
     hero.availability = req.body.availability;
     hero.description = req.body.description;
 
-    hero.typingTexts = JSON.parse(
-      req.body.typingTexts || "[]"
-    );
+    hero.typingTexts = JSON.parse(req.body.typingTexts || "[]");
 
-    // =====================================
-    // Hero Stats
-    // =====================================
+    // ==========================
+    // Stats
+    // ==========================
 
     hero.stats = [
       {

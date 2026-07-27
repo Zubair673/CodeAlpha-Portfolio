@@ -2,214 +2,92 @@ import React, { useEffect, useState } from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const Projects = () => {
-
   const [projects, setProjects] = useState([]);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
     fetchProjects();
-
   }, []);
 
   const fetchProjects = async () => {
-
     try {
-
-      const response = await fetch(
-        "https://codealpha-portfolio-1.onrender.com/api/projects"
-      );
-
+      const response = await fetch("https://codealpha-portfolio-1.onrender.com/api/projects");
       const data = await response.json();
-
       if (data.success) {
-
         setProjects(data.projects);
-
       }
-
-    }
-
-    catch (error) {
-
+    } catch (error) {
       console.log(error);
-
-    }
-
-    finally {
-
+    } finally {
       setLoading(false);
-
     }
-
   };
 
   return (
-
-    <section
-      id="projects"
-      className="py-14 md:py-16 px-6 md:px-20 bg-[#050505]"
-    >
-
+    <section id="projects" className="py-20 px-6 md:px-20 bg-[#050505]">
       <div className="max-w-6xl mx-auto">
-
-        {/* Heading */}
-
-        <div className="text-center mb-10">
-
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-
-            Projects
-
-          </h2>
-
-          <p className="text-gray-400 mt-3 max-w-2xl mx-auto">
-
-            Some of my recent frontend and MERN Stack projects.
-
-          </p>
-
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-white">Projects</h2>
+          <p className="text-gray-400 text-lg mt-4">Recent MERN Stack & Frontend work.</p>
         </div>
 
-        {/* Loading */}
-
         {loading ? (
-
-          <div className="text-center text-orange-500 text-xl py-20">
-
-            Loading Projects...
-
-          </div>
-
+          <div className="text-center text-orange-500 text-xl py-10">Loading...</div>
         ) : (
-
-          <div className="grid md:grid-cols-2 gap-6">
-                        {projects.length === 0 ? (
-
-              <div className="col-span-2 text-center text-gray-400 py-16">
-
-                No Projects Found
-
-              </div>
-
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {projects.length === 0 ? (
+              <div className="col-span-full text-center text-gray-400 py-10">No Projects Found</div>
             ) : (
-
               projects.map((project) => (
-
                 <div
                   key={project._id}
-                  className="bg-[#111] rounded-2xl overflow-hidden border border-orange-500/20 hover:border-orange-500 transition-all duration-300 hover:-translate-y-1"
+                  className="bg-[#111] rounded-xl overflow-hidden border border-orange-500/20 hover:border-orange-500 transition-all duration-300 p-3"
                 >
-
-                  {/* Image */}
-
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover hover:scale-105 transition duration-500"
+                    className="w-full h-32 object-cover rounded-lg"
                   />
-
-                  <div className="p-5">
-
+                  <div className="mt-3">
                     {project.featured && (
-
-                      <span className="inline-block bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">
-
-                        Featured
-
+                      <span className="inline-block bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded mb-2">
+                        FEATURED
                       </span>
-
                     )}
-
-                    <h3 className="text-xl font-bold text-white mb-3">
-
-                      {project.title}
-
-                    </h3>
-
-                    <p className="text-gray-400 text-sm leading-6 mb-5">
-
+                    <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                    <p className="text-gray-400 mt-1 leading-snug text-sm">
                       {project.description}
-
                     </p>
-
-                    {/* Technologies */}
-
-                    <div className="flex flex-wrap gap-2 mb-5">
-
+                    
+                    <div className="flex flex-wrap gap-1.5 mt-3">
                       {project.technologies?.map((tech, index) => (
-
-                        <span
-                          key={index}
-                          className="bg-orange-500/10 border border-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-xs"
-                        >
-
+                        <span key={index} className="bg-orange-500/10 text-orange-400 px-2 py-0.5 rounded text-xs">
                           {tech}
-
                         </span>
-
                       ))}
-
                     </div>
 
-                    {/* Buttons */}
-
-                    <div className="flex gap-3">
-
+                    <div className="flex gap-2 mt-4">
                       {project.github && (
-
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="flex-1 flex justify-center items-center gap-2 border border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white py-2.5 rounded-lg transition"
-                        >
-
-                          <FaGithub />
-
-                          GitHub
-
+                        <a href={project.github} target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-1.5 border border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white py-1.5 rounded text-sm transition">
+                          <FaGithub size={14} /> Code
                         </a>
-
                       )}
-
                       {project.liveDemo && (
-
-                        <a
-                          href={project.liveDemo}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="flex-1 flex justify-center items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white py-2.5 rounded-lg transition"
-                        >
-
-                          <FaExternalLinkAlt />
-
-                          Live Demo
-
+                        <a href={project.liveDemo} target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white py-1.5 rounded text-sm transition">
+                          <FaExternalLinkAlt size={12} /> Live
                         </a>
-
                       )}
-
                     </div>
-
                   </div>
-
                 </div>
-
               ))
-
             )}
-
           </div>
-
         )}
-
       </div>
-          </section>
-
+    </section>
   );
-
 };
 
 export default Projects;
