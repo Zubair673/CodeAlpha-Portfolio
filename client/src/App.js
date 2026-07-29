@@ -1,5 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute"; // Import zaroori hai
+import { useEffect, useState } from "react";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 
 // Public Portfolio
 import Home from "./pages/admin/Home";
@@ -24,43 +27,128 @@ import Contact from "./pages/admin/Contact";
 import Settings from "./pages/admin/Settings";
 
 function App() {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+
+    const timer = setTimeout(() => {
+
+      setLoading(false);
+
+    }, 2500);
+
+    return () => clearTimeout(timer);
+
+  }, []);
+
+  if (loading) {
+
+    return <LoadingScreen />;
+
+  }
+
   return (
     <BrowserRouter>
+
       <Routes>
-        {/* Portfolio - Public */}
-        <Route path="/" element={<Home />} />
 
-        {/* Admin Login - Public */}
-        <Route path="/admin" element={<AdminLogin />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
+        {/* Portfolio */}
 
-        {/* Protected Dashboard Routes - Sirf Logged-in users ke liye */}
-        <Route path="/dashboard" element={
-          <ProtectedRoute>
-            <AdminLayout />
-          </ProtectedRoute>
-        }>
-          <Route index element={<Dashboard />} />
-          <Route path="hero" element={<Hero />} />
-          <Route path="about" element={<About />} />
-          <Route path="skills" element={<Skills />} />
-          <Route path="experience" element={<Experience />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
 
-          {/* Projects */}
-          <Route path="projects" element={<Projects />} />
-          <Route path="add-project" element={<AddProject />} />
-          <Route path="edit-project/:id" element={<EditProject />} />
+        {/* Admin Login */}
 
-          {/* Other Pages */}
-          <Route path="certificates" element={<Certificates />} />
-          <Route path="messages" element={<Messages />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="settings" element={<Settings />} />
+        <Route
+          path="/admin"
+          element={<AdminLogin />}
+        />
+
+        <Route
+          path="/admin/login"
+          element={<AdminLogin />}
+        />
+
+        {/* Protected Dashboard */}
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
+
+          <Route
+            index
+            element={<Dashboard />}
+          />
+
+          <Route
+            path="hero"
+            element={<Hero />}
+          />
+
+          <Route
+            path="about"
+            element={<About />}
+          />
+
+          <Route
+            path="skills"
+            element={<Skills />}
+          />
+
+          <Route
+            path="experience"
+            element={<Experience />}
+          />
+
+          <Route
+            path="projects"
+            element={<Projects />}
+          />
+
+          <Route
+            path="add-project"
+            element={<AddProject />}
+          />
+
+          <Route
+            path="edit-project/:id"
+            element={<EditProject />}
+          />
+
+          <Route
+            path="certificates"
+            element={<Certificates />}
+          />
+
+          <Route
+            path="messages"
+            element={<Messages />}
+          />
+
+          <Route
+            path="contact"
+            element={<Contact />}
+          />
+
+          <Route
+            path="settings"
+            element={<Settings />}
+          />
+
         </Route>
+
       </Routes>
+
     </BrowserRouter>
   );
 }
 
 export default App;
-// Triggering deployment status check update
