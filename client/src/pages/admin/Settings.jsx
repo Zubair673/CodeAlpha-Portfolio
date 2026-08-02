@@ -12,7 +12,7 @@ const Settings = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   // Render URL yahan set kar diya hai
-  const API_URL = "https://codealpha-portfolio-1.onrender.com";
+  const API_URL = "lucid-caring-production-a6e4.up.railway.app";
 
   useEffect(() => {
     fetchSettings();

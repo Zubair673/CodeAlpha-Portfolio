@@ -115,7 +115,7 @@ const AddProject = () => {
 
       const response = await fetch(
 
-        "https://codealpha-portfolio-1.onrender.com/api/projects",
+        "lucid-caring-production-a6e4.up.railway.app/api/projects",
 
         {
 

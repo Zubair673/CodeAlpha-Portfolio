@@ -31,7 +31,7 @@ const Dashboard = () => {
       // Projects
 
       const projectRes = await fetch(
-        "https://codealpha-portfolio-1.onrender.com/api/projects"
+        "lucid-caring-production-a6e4.up.railway.app/api/projects"
       );
 
       const projectData = await projectRes.json();
@@ -39,7 +39,7 @@ const Dashboard = () => {
       // Messages
 
       const messageRes = await fetch(
-        "https://codealpha-portfolio-1.onrender.com/api/messages",
+        "lucid-caring-production-a6e4.up.railway.app/api/messages",
         {
           headers: {
             Authorization: `Bearer ${token}`,

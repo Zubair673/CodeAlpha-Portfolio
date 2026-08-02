@@ -7,10 +7,12 @@ A modern Full Stack Portfolio Website built with the MERN Stack. It includes a b
 ## 🌐 Live Demo
 
 ### Portfolio
+
 https://zubair-portfolio-phi.vercel.app/
 
 ### Backend API
-https://codealpha-portfolio-1.onrender.com/
+
+lucid-caring-production-a6e4.up.railway.app/
 
 ---
 
@@ -141,7 +143,6 @@ Create a `.env` file inside the server folder.
 ## Admin Dashboard
 
 <img width="1343" height="638" alt="image" src="https://github.com/user-attachments/assets/61d2cc67-d352-43eb-8a2d-bdbc170cc827" />
-
 
 ---
 
