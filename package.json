@@ -1,6 +1,13 @@
 {
+  "name": "codealpha-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd server && npm install && npm start"
+  },
   "dependencies": {
     "cloudinary": "^2.10.0",
+    "lucide-react": "^1.27.0",
     "multer": "^2.2.0"
   }
 }
