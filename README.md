@@ -12,7 +12,7 @@ https://zubair-portfolio-phi.vercel.app/
 
 ### Backend API
 
-lucid-caring-production-a6e4.up.railway.app/
+https://lucid-caring-production-a6e4.up.railway.app/
 
 ---
 

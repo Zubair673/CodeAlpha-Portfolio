@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaBootstrap } from "react-icons/fa";
 import { SiTailwindcss, SiExpress, SiMongodb, SiTypescript, SiNextdotjs, SiPostgresql, SiFirebase, SiDocker, SiRedux, SiFigma } from "react-icons/si";
 
-const API = "lucid-caring-production-a6e4.up.railway.app/api/skills";
+const API = "https://lucid-caring-production-a6e4.up.railway.app/api/skills";
 
 const iconMap = {
   html: <FaHtml5 className="text-4xl text-orange-500" />,

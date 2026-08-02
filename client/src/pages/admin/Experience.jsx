@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API = "lucid-caring-production-a6e4.up.railway.app/api/experience";
+const API = "https://lucid-caring-production-a6e4.up.railway.app/api/experience";
 
 const Experience = () => {
 

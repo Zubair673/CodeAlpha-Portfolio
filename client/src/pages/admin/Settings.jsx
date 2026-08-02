@@ -12,7 +12,7 @@ const Settings = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   // Render URL yahan set kar diya hai
-  const API_URL = "lucid-caring-production-a6e4.up.railway.app";
+  const API_URL = "https://lucid-caring-production-a6e4.up.railway.app";
 
   useEffect(() => {
     fetchSettings();

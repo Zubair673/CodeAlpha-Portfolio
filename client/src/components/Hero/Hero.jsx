@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 
-const API = "lucid-caring-production-a6e4.up.railway.app/api/hero";
+const API = "https://lucid-caring-production-a6e4.up.railway.app/api/hero";
 
 const Hero = ({ handleNavClick = () => {} }) => {
   const [displayText, setDisplayText] = useState("");

@@ -4,7 +4,7 @@ const Certificates = () => {
   const [certs, setCerts] = useState([]);
 
   useEffect(() => {
-    fetch("lucid-caring-production-a6e4.up.railway.app/api/certificates")
+    fetch("https://lucid-caring-production-a6e4.up.railway.app/api/certificates")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setCerts(data.certificates);

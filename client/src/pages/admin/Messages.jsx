@@ -7,7 +7,7 @@ const Messages = () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch("lucid-caring-production-a6e4.up.railway.app/api/messages");
+      const res = await fetch("https://lucid-caring-production-a6e4.up.railway.app/api/messages");
       const data = await res.json();
       if (data.success) setMessages(data.messages);
     } catch (err) { console.log("Failed to load"); }
@@ -16,7 +16,7 @@ const Messages = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Delete this message?")) {
       try {
-        const res = await fetch(`lucid-caring-production-a6e4.up.railway.app/api/messages/${id}`, { method: 'DELETE' });
+        const res = await fetch(`https://lucid-caring-production-a6e4.up.railway.app/api/messages/${id}`, { method: 'DELETE' });
         const data = await res.json();
         if (data.success) {
           alert("Message deleted!");

@@ -8,7 +8,7 @@ const EditProject = () => {
   const [loading, setLoading] = useState(false);
   
   // Render URL set kiya hai
-  const API_URL = "lucid-caring-production-a6e4.up.railway.app";
+  const API_URL = "https://lucid-caring-production-a6e4.up.railway.app";
 
   const [project, setProject] = useState({
     title: "",

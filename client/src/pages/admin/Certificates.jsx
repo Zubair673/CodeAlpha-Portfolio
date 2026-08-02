@@ -13,7 +13,7 @@ const Certificates = () => {
 
   const fetchCerts = async () => {
     try {
-      const res = await fetch("lucid-caring-production-a6e4.up.railway.app/api/certificates");
+      const res = await fetch("https://lucid-caring-production-a6e4.up.railway.app/api/certificates");
       const data = await res.json();
       if (data.success) setCerts(data.certificates);
     } catch (err) { console.log("Failed to load"); }
@@ -28,7 +28,7 @@ const Certificates = () => {
     Object.keys(formData).forEach(key => data.append(key, formData[key]));
     if (imageFile) data.append("image", imageFile);
 
-    const url = editingId ? `lucid-caring-production-a6e4.up.railway.app/api/certificates/${editingId}` : "lucid-caring-production-a6e4.up.railway.app/api/certificates";
+    const url = editingId ? `https://lucid-caring-production-a6e4.up.railway.app/api/certificates/${editingId}` : "https://lucid-caring-production-a6e4.up.railway.app/api/certificates";
     const method = editingId ? "PUT" : "POST";
     
     try {
@@ -68,7 +68,7 @@ const Certificates = () => {
   const handleDelete = async (id) => {
     if(window.confirm("Are you sure you want to delete this?")) {
       try {
-        const res = await fetch(`lucid-caring-production-a6e4.up.railway.app/api/certificates/${id}`, { method: 'DELETE' });
+        const res = await fetch(`https://lucid-caring-production-a6e4.up.railway.app/api/certificates/${id}`, { method: 'DELETE' });
         const data = await res.json();
         
         if (data.success) {

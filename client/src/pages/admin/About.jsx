@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API = "lucid-caring-production-a6e4.up.railway.app/api/about";
+const API = "https://lucid-caring-production-a6e4.up.railway.app/api/about";
 
 const About = () => {
   const token = localStorage.getItem("token");
