@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "cd server && npm install && npm start"
-  },
+  "start": "cd server && npm install --legacy-peer-deps && npm start"
+},
   "dependencies": {
     "cloudinary": "^2.10.0",
     "lucide-react": "^1.27.0",
