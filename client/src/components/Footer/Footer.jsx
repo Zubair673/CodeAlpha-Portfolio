@@ -8,7 +8,7 @@ const Footer = ({ active, handleNavClick, navItems }) => {
   });
 
   useEffect(() => {
-    fetch("https://lucid-caring-production-a6e4.up.railway.app/api/settings")
+    fetch("https://codealpha-portfolio-1.onrender.comapi/settings")
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.settings) {

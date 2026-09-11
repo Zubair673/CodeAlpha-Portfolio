@@ -18,7 +18,7 @@ const Contact = () => {
   const [error, setError] = useState(""); // Error handling ke liye naya state
 
   useEffect(() => {
-    fetch("https://lucid-caring-production-a6e4.up.railway.app/api/contact")
+    fetch("https://codealpha-portfolio-1.onrender.comapi/contact")
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.contact) {
@@ -39,7 +39,7 @@ const Contact = () => {
     setError(""); // Har baar submit karne par purana error clear kar dein
 
     try {
-      const response = await fetch("https://lucid-caring-production-a6e4.up.railway.app/api/messages", {
+      const response = await fetch("https://codealpha-portfolio-1.onrender.comapi/messages", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

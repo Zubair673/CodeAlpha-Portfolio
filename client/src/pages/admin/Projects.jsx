@@ -19,7 +19,7 @@ const Projects = () => {
   const fetchProjects = async () => {
     try {
       const response = await fetch(
-        "https://lucid-caring-production-a6e4.up.railway.app/api/projects"
+        "https://codealpha-portfolio-1.onrender.comapi/projects"
       );
 
       const data = await response.json();
@@ -41,7 +41,7 @@ const Projects = () => {
 
     try {
       const response = await fetch(
-        `https://lucid-caring-production-a6e4.up.railway.app/api/projects/${id}`,
+        `https://codealpha-portfolio-1.onrender.comapi/projects/${id}`,
         {
           method: "DELETE",
           headers: {
