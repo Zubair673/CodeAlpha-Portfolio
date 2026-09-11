@@ -10,7 +10,7 @@ const Navbar = ({ active, handleNavClick, navItems }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [resume, setResume] = useState("");
 
-  const API_URL = "https://https://codealpha-portfolio-1.onrender.com/";
+  const API_URL = "https://codealpha-portfolio-1.onrender.com";
 
   useEffect(() => {
 
