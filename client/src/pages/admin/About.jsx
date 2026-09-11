@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API = "https://codealpha-portfolio-1.onrender.comapi/about";
+const API = "https://codealpha-portfolio-1.onrender.com/api/about";
 
 const About = () => {
   const token = localStorage.getItem("token");

@@ -8,7 +8,7 @@ const Footer = ({ active, handleNavClick, navItems }) => {
   });
 
   useEffect(() => {
-    fetch("https://codealpha-portfolio-1.onrender.comapi/settings")
+    fetch("https://codealpha-portfolio-1.onrender.com/api/settings")
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.settings) {

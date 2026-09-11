@@ -11,7 +11,7 @@ const Projects = () => {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch("https://codealpha-portfolio-1.onrender.comapi/projects");
+      const response = await fetch("https://codealpha-portfolio-1.onrender.com/api/projects");
       const data = await response.json();
       if (data.success) {
         setProjects(data.projects);
