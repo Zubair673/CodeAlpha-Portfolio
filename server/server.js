@@ -81,6 +81,9 @@ app.get("/", (req, res) => {
   res.send("Portfolio Backend API Running...");
 });
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 // ===============================
 // 404 Route
 // ===============================
