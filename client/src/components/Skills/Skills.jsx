@@ -1,6 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaBootstrap } from "react-icons/fa";
-import { SiTailwindcss, SiExpress, SiMongodb, SiTypescript, SiNextdotjs, SiPostgresql, SiFirebase, SiDocker, SiRedux, SiFigma } from "react-icons/si";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaGitAlt,
+  FaGithub,
+  FaBootstrap,
+} from "react-icons/fa";
+
+import {
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
+  SiTypescript,
+  SiNextdotjs,
+  SiPostgresql,
+  SiFirebase,
+  SiDocker,
+  SiRedux,
+  SiFigma,
+} from "react-icons/si";
 
 const API = "https://codealpha-portfolio-1.onrender.com/api/skills";
 
@@ -14,9 +35,9 @@ const iconMap = {
   express: <SiExpress className="text-4xl text-gray-300" />,
   mongodb: <SiMongodb className="text-4xl text-green-600" />,
   git: <FaGitAlt className="text-4xl text-red-500" />,
-  github: <FaGithub className="text-4xl text-white" />,
+  github: <FaGithub className="text-4xl text-themeText" />,
   typescript: <SiTypescript className="text-4xl text-blue-600" />,
-  next: <SiNextdotjs className="text-4xl text-white" />,
+  next: <SiNextdotjs className="text-4xl text-themeText" />,
   postgres: <SiPostgresql className="text-4xl text-blue-400" />,
   firebase: <SiFirebase className="text-4xl text-yellow-500" />,
   docker: <SiDocker className="text-4xl text-blue-500" />,
@@ -36,6 +57,7 @@ const Skills = () => {
     try {
       const response = await fetch(API);
       const data = await response.json();
+
       if (data.success) {
         setSkills(data.skills);
       }
@@ -45,31 +67,87 @@ const Skills = () => {
   };
 
   const getIcon = (iconName) => {
-    if (!iconName) return <FaReact className="text-4xl text-cyan-400" />;
+    if (!iconName) {
+      return <FaReact className="text-4xl text-cyan-400" />;
+    }
+
     const normalizedName = iconName.toLowerCase().trim();
-    return iconMap[normalizedName] || <FaReact className="text-4xl text-cyan-400" />;
+
+    return (
+      iconMap[normalizedName] || (
+        <FaReact className="text-4xl text-cyan-400" />
+      )
+    );
   };
 
   return (
-    <section id="skills" className="bg-[#050505] py-16 px-6 md:px-20">
+    <section
+      id="skills"
+      className="
+        bg-themeBg
+        text-themeText
+        py-16
+        px-6 md:px-20
+        transition-colors duration-300
+      "
+    >
       <div className="max-w-6xl mx-auto">
+
+        {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">Skills</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-themeText">
+            Skills
+          </h2>
         </div>
 
+        {/* Skills */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {skills.map((skill) => (
-            <div key={skill._id} className="bg-[#111] border border-orange-500/20 rounded-xl p-4 text-center hover:border-orange-500 transition-all duration-300">
+            <div
+              key={skill._id}
+              className="
+                bg-themeCard
+                border border-orange-500/20
+                rounded-xl
+                p-4
+                text-center
+                hover:border-orange-500
+                transition-all duration-300
+              "
+            >
+              {/* Icon */}
               <div className="flex justify-center mb-3">
                 {getIcon(skill.icon)}
               </div>
-              <h3 className="text-white font-semibold text-sm">{skill.name}</h3>
-              <div className="mt-3 w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                <div className="bg-orange-500 h-full rounded-full" style={{ width: `${skill.percentage}%` }}></div>
+
+              {/* Skill Name */}
+              <h3 className="text-themeText font-semibold text-sm">
+                {skill.name}
+              </h3>
+
+              {/* Progress Bar */}
+              <div
+                className="
+                  mt-3
+                  w-full
+                  h-1.5
+                  bg-gray-300
+                  dark:bg-gray-700
+                  rounded-full
+                  overflow-hidden
+                "
+              >
+                <div
+                  className="bg-orange-500 h-full rounded-full"
+                  style={{
+                    width: `${skill.percentage}%`,
+                  }}
+                ></div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

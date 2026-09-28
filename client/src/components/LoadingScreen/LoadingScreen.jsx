@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const LoadingScreen = () => {
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      setIsDark(savedTheme === "dark");
+    } else {
+      setIsDark(true);
+    }
+  }, []);
+
   return (
-    <div className="fixed inset-0 bg-[#050505] flex flex-col items-center justify-center z-[9999]">
+    <div
+      className={`fixed inset-0 flex flex-col items-center justify-center z-[9999] transition-colors duration-300 ${
+        isDark ? "bg-[#050505] text-white" : "bg-white text-[#111111]"
+      }`}
+    >
 
       {/* Logo */}
       <div className="relative mb-8">
@@ -16,11 +32,19 @@ const LoadingScreen = () => {
       </div>
 
       {/* Loading Text */}
-      <h2 className="text-3xl font-bold text-white">
+      <h2
+        className={`text-3xl font-bold ${
+          isDark ? "text-white" : "text-[#111111]"
+        }`}
+      >
         Loading Portfolio
       </h2>
 
-      <p className="text-gray-400 mt-2">
+      <p
+        className={`mt-2 ${
+          isDark ? "text-gray-400" : "text-gray-600"
+        }`}
+      >
         Please wait a moment...
       </p>
 

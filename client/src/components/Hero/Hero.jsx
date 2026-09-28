@@ -45,14 +45,12 @@ const Hero = ({ handleNavClick = () => {} }) => {
       if (!deleting) {
         setDisplayText(currentText.substring(0, charIndex + 1));
         charIndex++;
-
         if (charIndex === currentText.length) {
           deleting = true;
         }
       } else {
         setDisplayText(currentText.substring(0, charIndex - 1));
         charIndex--;
-
         if (charIndex === 0) {
           deleting = false;
           textIndex = (textIndex + 1) % hero.typingTexts.length;
@@ -66,41 +64,44 @@ const Hero = ({ handleNavClick = () => {} }) => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 md:px-20 xl:px-28 pt-24 md:pt-28 pb-10 gap-10 bg-[#050505]"
+      className="min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 md:px-20 xl:px-28 pt-24 md:pt-28 pb-10 gap-10 bg-themeBg text-themeText transition-colors duration-300"
     >
       {/* Left Side */}
       <div className="flex-1 max-w-3xl text-center lg:text-left order-1">
+        {/* Availability */}
         <span className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 text-orange-400 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold mb-6">
           {hero.availability}
         </span>
 
+        {/* Typing Text */}
         <h2 className="text-lg md:text-3xl font-bold text-orange-400 mb-4 min-h-[50px]">
           {displayText}
-          <span className="animate-pulse text-white">|</span>
+          <span className="animate-pulse text-themeText">|</span>
         </h2>
 
-        <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black leading-tight text-white mb-6">
+        {/* Name */}
+        <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black leading-tight text-themeText mb-6">
           <span className="block">{hero.name?.split(" ")[0]}</span>
           <span className="block mt-2 text-orange-500">
             {hero.name?.split(" ").slice(1).join(" ")}
           </span>
         </h1>
 
-        <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
+        {/* Description */}
+        <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
           {hero.description}
         </p>
 
+        {/* Buttons */}
         <div className="flex flex-wrap justify-center lg:justify-start gap-4">
           <a
             href="#projects"
             onClick={(e) => {
               e.preventDefault();
               handleNavClick("Projects");
-              document
-                .getElementById("projects")
-                ?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="bg-orange-500 hover:bg-orange-600 transition duration-300 px-8 py-3 rounded-lg font-semibold text-base hover:scale-105"
+            className="bg-orange-500 hover:bg-orange-600 text-white transition duration-300 px-8 py-3 rounded-lg font-semibold text-base hover:scale-105"
           >
             View Projects
           </a>
@@ -110,11 +111,9 @@ const Hero = ({ handleNavClick = () => {} }) => {
             onClick={(e) => {
               e.preventDefault();
               handleNavClick("Contact");
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="border border-orange-500 hover:bg-orange-500/20 transition duration-300 px-8 py-3 rounded-lg font-semibold text-base hover:scale-105"
+            className="border border-orange-500 text-themeText hover:bg-orange-500/20 transition duration-300 px-8 py-3 rounded-lg font-semibold text-base hover:scale-105"
           >
             Contact Me
           </a>
@@ -123,6 +122,7 @@ const Hero = ({ handleNavClick = () => {} }) => {
 
       {/* Right Side */}
       <div className="flex-1 flex flex-col items-center order-2">
+        {/* Profile Image */}
         <div className="relative">
           <div className="absolute inset-0 rounded-full bg-orange-500 blur-[90px] opacity-20"></div>
           <img
@@ -137,12 +137,12 @@ const Hero = ({ handleNavClick = () => {} }) => {
           {hero.stats?.map((item, index) => (
             <div
               key={index}
-              className="bg-[#111] border border-orange-500/20 rounded-xl p-4 text-center hover:border-orange-500 transition duration-300"
+              className="bg-themeCard border border-orange-500/20 rounded-xl p-4 text-center hover:border-orange-500 transition duration-300"
             >
-              <h3 className="text-2xl font-bold text-orange-500">
-                {item.value}
-              </h3>
-              <p className="text-gray-400 text-sm mt-1">{item.label}</p>
+              <h3 className="text-2xl font-bold text-orange-500">{item.value}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                {item.label}
+              </p>
             </div>
           ))}
         </div>

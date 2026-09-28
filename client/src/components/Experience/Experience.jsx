@@ -31,25 +31,29 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="py-10 md:py-12 px-6 md:px-20 bg-[#050505]"
+      className="py-10 md:py-12 px-6 md:px-20 bg-themeBg text-themeText transition-colors duration-300"
     >
       <div className="max-w-6xl mx-auto">
 
+        {/* Heading */}
         <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-4xl md:text-5xl font-bold text-themeText">
             Experience
           </h2>
 
-          <p className="text-gray-400 mt-3">
+          <p className="text-gray-600 dark:text-gray-400 mt-3">
             My internships and academic journey.
           </p>
         </div>
 
+        {/* Timeline */}
         <div className="relative border-l-2 border-orange-500/30 ml-4 md:ml-8">
 
           {loading ? (
 
-            <p className="text-white ml-10">Loading...</p>
+            <p className="text-themeText ml-10">
+              Loading...
+            </p>
 
           ) : experiences.length > 0 ? (
 
@@ -60,6 +64,7 @@ const Experience = () => {
                 className="relative pl-10 pb-6"
               >
 
+                {/* Timeline Icon */}
                 <div className="absolute -left-[18px] top-6 w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white shadow-lg">
                   {item.icon === "education" ? (
                     <FaGraduationCap />
@@ -68,13 +73,14 @@ const Experience = () => {
                   )}
                 </div>
 
-                <div className="bg-[#111] border border-orange-500/20 rounded-2xl p-6 hover:border-orange-500 hover:-translate-y-1 transition-all duration-300">
+                {/* Experience Card */}
+                <div className="bg-themeCard border border-orange-500/20 rounded-2xl p-6 hover:border-orange-500 hover:-translate-y-1 transition-all duration-300">
 
                   <span className="text-orange-400 text-sm font-semibold">
                     {item.duration}
                   </span>
 
-                  <h3 className="text-2xl font-bold text-white mt-2">
+                  <h3 className="text-2xl font-bold text-themeText mt-2">
                     {item.title}
                   </h3>
 
@@ -82,7 +88,7 @@ const Experience = () => {
                     {item.company}
                   </p>
 
-                  <p className="text-gray-400 leading-7 mt-4">
+                  <p className="text-gray-600 dark:text-gray-400 leading-7 mt-4">
                     {item.description}
                   </p>
 
